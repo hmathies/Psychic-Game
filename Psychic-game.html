@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- <meta charset="UTF-8"> -->
+	<title>The Psychic Game</title>
+</head>
+<body>
+
+<div id="game">
+	<h1>Guess the letter!</h1>
+	<h2>I am a letter in the alphabet.  Press any letter to guess which letter I am.</h2>
+
+</div>
+
+
+<!-- I need the computer to choose a letter
+I need the user to make a choice
+capture those choices
+compare these choices and determine a win or loss
+display the result to the user
+I need the computer to calculate guesses left after each user choice
+display the guesses left to the user
+I need the computer to store the user guesses
+disply user guesses to the user -->
+
+
+<script type="text/javascript">
+
+	var wins = 0;
+	var losses = 0;
+	var GuessesRemaining = 3;
+	//array of letters users need to guess
+	var letters = ["h", "l", "m"];
+	//a variable to hold the array length
+	var arrayLength = letters.length;
+
+	document.onkeyup = function() {
+		var userguess = String.fromCharCode(event.keyCode).toLowerCase();
+
+	// for (var i = 0; i < arrayLength; i++) {
+	// 	alert(letters[i]);
+
+		if (userguess=='h' || userguess=='l' || userguess=='m') {
+				wins++;
+				
+			} else {
+				losses++;
+				GuessesRemaining--;
+			}
+				if (losses === 3) {
+					alert("game over");
+				}
+			
+
+
+		var html = "<h1>I am a letter in the alphabet.  Press any letter to guess which letter I am.</h1>" + 
+			"<h2>wins: " + wins + "</h2>" +
+			"<h2>losses: " + losses + "</h2>" +
+			"<h2>Guesses Remaining: " + GuessesRemaining + "</h2>";
+
+			document.querySelector('#game').innerHTML = html;
+		
+		}
+	
+
+</script>	
+</body>
+</html>
