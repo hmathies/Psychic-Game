@@ -1,68 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- <meta charset="UTF-8"> -->
-	<title>The Psychic Game</title>
+        <meta charset="UTF-8">
+        <title>The Psychic Game</title>
 </head>
 <body>
 
-<div id="game">
-	<h1>Guess the letter!</h1>
-	<h2>I am a letter in the alphabet.  Press any letter to guess which letter I am.</h2>
+    <div id="game">
+        <h1>Guess the letter!</h1>
+        <h2>I am a letter in the alphabet.  Press any letter to guess which letter I am.</h2>
+        <h3 id= "wins">0</h3>
+        <h3 id="losses">0</h3>
+        <h3 id="guesses">3</h3>
+        <h1 id="gameOver"></h1>
 
-</div>
-
-
-<!-- I need the computer to choose a letter
-I need the user to make a choice
-capture those choices
-compare these choices and determine a win or loss
-display the result to the user
-I need the computer to calculate guesses left after each user choice
-display the guesses left to the user
-I need the computer to store the user guesses
-disply user guesses to the user -->
+    </div>
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-	var wins = 0;
-	var losses = 0;
-	var GuessesRemaining = 3;
-	//array of letters users need to guess
-	var letters = ["h", "l", "m"];
-	//a variable to hold the array length
-	var arrayLength = letters.length;
+//this is the array that holds the computer choices for the guessing game
+        var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-	document.onkeyup = function() {
-		var userguess = String.fromCharCode(event.keyCode).toLowerCase();
+// Variables for tracking our wins, losses and ties. Wins and losses are set to 0 so that it always begins there.  Guesses are set to 3 because it counts down. 
+        var wins = 0;
+        var losses = 0;
+        var guesses = 3;
+//the computer will select a random letter of the alphabet.
+        var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+//the user will select a letter 
+        document.addEventListener('keyup', function(event) {
+            var userGuess = event.key;
+ //the userGuess and computerChoice are compared.  If they are the same the wins increase.  If they are not, the losses increase and guesses decreases     
+    if(userGuess === computerChoice){
+        wins++;
 
-	// for (var i = 0; i < arrayLength; i++) {
-	// 	alert(letters[i]);
+    }else{
+        losses++;
+        // guesses++;
+    }
+    if (losses <= 3) {
+        guesses--;
+    }
+//once the user has used up 3 guesses, the game over will display and the game will end
+    else {
+        
+        document.getElementById('gameOver').innerHTML = "You used up all your guesses! Game over!";
+        return;
+    }
+//the code below will print the wins, losses, and guesses to the screen
+    document.getElementById('wins').innerHTML = "Wins: " + wins;
+    document.getElementById('losses').innerHTML = "losses: " + losses;
+    document.getElementById('guesses').innerHTML = "Guesses left: " + guesses;
+    
 
-		if (userguess=='h' || userguess=='l' || userguess=='m') {
-				wins++;
-				
-			} else {
-				losses++;
-				GuessesRemaining--;
-			}
-				if (losses === 3) {
-					alert("game over");
-				}
-			
+})
 
 
-		var html = "<h1>I am a letter in the alphabet.  Press any letter to guess which letter I am.</h1>" + 
-			"<h2>wins: " + wins + "</h2>" +
-			"<h2>losses: " + losses + "</h2>" +
-			"<h2>Guesses Remaining: " + GuessesRemaining + "</h2>";
-
-			document.querySelector('#game').innerHTML = html;
-		
-		}
-	
-
-</script>	
+    </script>
 </body>
 </html>
