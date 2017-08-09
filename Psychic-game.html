@@ -28,8 +28,8 @@
 				text-align: center;
 			}
 		/*this is styling for the background*/
-    /*    	body {
-        		/*background: cornflowerblue;*/
+        	body {
+        		background: cornflowerblue;
         	}
 
         	body, html {
@@ -37,33 +37,17 @@
     			margin: 0px;
 			}
 
-			.bg {
-    	/* The image used ---- need to try and delete the "shutterstock" text*/
-    		
-		background-image: url("https://thumb7.shutterstock.com/display_pic_with_logo/1314898/415165084/stock-photo-famous-ferris-wheel-at-the-oktoberfest-in-munich-germany-415165084.jpg");
-
-    	/* Full height */
-    		height: 100%; 
-    		margin: 0;
-
-    	/* Center and scale the image nicely */
-    		background-position: center;
-    		background-repeat: no-repeat;
-    		background-size: cover;
-            }
+		
         </style>
 </head>
-<body class="bg">
-  <!-- <div class="bg" img src="image/Fair-Background.jpg" alt="fair" height="100%" width="100%"></div>
-<!		
- -->  
+<body> 
 
     <div id="game" >
-        <h1>Guess the letter!</h1>
-        <h2>I am a letter in the alphabet.  Press any letter to guess which letter I am.</h2>
-        <h3 id= "wins">0</h3>
-        <h3 id="losses">0</h3>
-        <h3 id="guesses">3</h3>
+        <h1>Guess What Letter I'm Thinking!</h1>
+        <h2>Press any letter to guess which letter I am.</h2>
+        <h3 id= "win">Wins: 0</h3>
+        <h3 id="losses">Losses: 0</h3>
+        <h3 id="guesses">Guesses Left: 9</h3>
         <h1 id="gameOver"></h1>
 
     </div>
@@ -77,35 +61,53 @@
 // Variables for tracking our wins, losses and ties. Wins and losses are set to 0 so that it always begins there.  Guesses are set to 3 because it counts down. 
         var wins = 0;
         var losses = 0;
-        var guesses = 3;
+        var guesses = 9;
 //the computer will select a random letter of the alphabet.
         var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
 //the user will select a letter 
         document.addEventListener('keyup', function(event) {
             var userGuess = event.key;
- //the userGuess and computerChoice are compared.  If they are the same the wins increase.  If they are not, the losses increase and guesses decreases     
+ //the userGuess and computerChoice are compared.  If they are the same, the wins increase.  If they are not, the losses increase and guesses decreases     
     if(userGuess == computerChoice){
         wins++;
+        guesses--;
+        //the code below will print the wins, losses, and guesses to the screen
 		document.getElementById('gameOver').innerHTML = "You won!";
-		return;
+        document.getElementById('win').innerHTML = "Wins: " + wins;
+        document.getElementById('guesses').innerHTML = "Guesses Left: " + guesses;
+        
 	}
-    else{
-        losses++;
-        // guesses++;
-    }
-    if (losses <= 3) {
+    else {
+        //this makes the guesses go down every time
         guesses--;
     }
-//once the user has used up 3 guesses, the game over will display and the game will end
-    else {
-        
-        document.getElementById('gameOver').innerHTML = "Game over! You lost";
-        return;
+    if (guesses < 1) {
+        //display the loss to the screen
+        losses++;
+        //the code below will print the wins, losses, and guesses to the screen
+         document.getElementById('guesses').innerHTML = "Guesses Left: " + guesses;
+          document.getElementById('losses').innerHTML = "Losses: " + losses;
     }
+    // else{
+    //     guesses--;
+    // }
+    // if (guesses = 0) {
+    //     losses++;
+    //     document.getElementById('gameOver').innerHTML = "Game over! You lost";   
+    // }
+    // if (losses <= 9) {
+    //     guesses--;
+    // }
+//once the user has used up 3 guesses, the game over will display and the game will end
+    // else if{
+        
+   
+        
+    // }
 //the code below will print the wins, losses, and guesses to the screen
-    document.getElementById('wins').innerHTML = "Wins: " + wins;
-    document.getElementById('losses').innerHTML = "losses: " + losses;
-    document.getElementById('guesses').innerHTML = "Guesses left: " + guesses;
+    
+    document.getElementById('losses').innerHTML = "Losses: " + losses;
+    document.getElementById('guesses').innerHTML = "Guesses Left: " + guesses;
     
 
 })
