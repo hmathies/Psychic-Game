@@ -1,0 +1,51 @@
+      
+        /*This is styling for the navigation bar and footer*/
+       .header {
+        text-align: center;
+        word-spacing: 10px;
+        color: blue;
+       }
+
+
+        .footer {
+                background: #FFFFF0;
+                position: relative;
+                clear: both;
+            }
+
+
+
+        /*This is styling for the 'game over' and 'you win' text that pops up */	
+        #gameOver {
+				color: red;
+				font: monospace;
+				font-weight: 20px;
+				text-shadow: 0 0 5px rgba(0,0,0,0.5);
+				text-align: center;
+				font-size: 60px;
+				font-stretch: 10px;
+				font-family: 'Sedgwick Ave', cursive;
+        	}
+        /*this is styling for the game div*/
+        	#game {
+        		margin: 0px 70px 0px 70px;
+        		text-indent: 20px;
+    			background: aliceblue;
+    			border-color: darkviolet;
+				border-radius: 25%;
+				border-style: groove;
+				border-width: 20px;
+				text-align: center;
+			}
+		/*this is styling for the background*/
+        	body {
+        		background: cornflowerblue;
+        	}
+
+        	body, html {
+    			height: 100%;
+    			margin: 0px;
+			}
+
+		
+     

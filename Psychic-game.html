@@ -3,45 +3,19 @@
 <head>
         <meta charset="UTF-8">
         <title>The Psychic Game</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link class="font" href="https://fonts.googleapis.com/css?family=Abel|Indie+Flower|Sedgwick+Ave+Display" rel="stylesheet">
-        <style type="text/css">
-        /*This is styling for the 'game over' and 'you win' text that pops up */	
-        #gameOver {
-				color: red;
-				font: monospace;
-				font-weight: 20px;
-				text-shadow: 0 0 5px rgba(0,0,0,0.5);
-				text-align: center;
-				font-size: 60px;
-				font-stretch: 10px;
-				font-family: 'Sedgwick Ave', cursive;
-        	}
-        /*this is styling for the game div*/
-        	#game {
-        		margin: 0px 70px 0px 70px;
-        		text-indent: 20px;
-    			background: aliceblue;
-    			border-color: darkviolet;
-				border-radius: 25%;
-				border-style: groove;
-				border-width: 20px;
-				text-align: center;
-			}
-		/*this is styling for the background*/
-        	body {
-        		background: cornflowerblue;
-        	}
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
 
-        	body, html {
-    			height: 100%;
-    			margin: 0px;
-			}
-
-		
-        </style>
 </head>
 <body> 
-
+  <div class="row header"> 
+    <nav class="navbar navbar-default navbar-custom">
+      <div>
+        <h1>Psychic Game</h1>
+      </div>
+    </nav>
+   </div>
     <div id="game" >
         <h1>Guess What Letter I'm Thinking!</h1>
         <h2>Press any letter to guess which letter I am.</h2>
@@ -53,67 +27,20 @@
     </div>
 
 
-    <script type="text/javascript">
-
-//this is the array that holds the computer choices for the guessing game
-        var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-
-// Variables for tracking our wins, losses and ties. Wins and losses are set to 0 so that it always begins there.  Guesses are set to 3 because it counts down. 
-        var wins = 0;
-        var losses = 0;
-        var guesses = 9;
-//the computer will select a random letter of the alphabet.
-        var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
-//the user will select a letter 
-        document.addEventListener('keyup', function(event) {
-            var userGuess = event.key;
- //the userGuess and computerChoice are compared.  If they are the same, the wins increase.  If they are not, the losses increase and guesses decreases     
-    if(userGuess == computerChoice){
-        wins++;
-        guesses--;
-        //the code below will print the wins, losses, and guesses to the screen
-		document.getElementById('gameOver').innerHTML = "You won!";
-        document.getElementById('win').innerHTML = "Wins: " + wins;
-        document.getElementById('guesses').innerHTML = "Guesses Left: " + guesses;
-        
-	}
-    else {
-        //this makes the guesses go down every time
-        guesses--;
-    }
-    if (guesses < 1) {
-        //display the loss to the screen
-        losses++;
-        //the code below will print the wins, losses, and guesses to the screen
-         document.getElementById('guesses').innerHTML = "Guesses Left: " + guesses;
-          document.getElementById('losses').innerHTML = "Losses: " + losses;
-    }
-    // else{
-    //     guesses--;
-    // }
-    // if (guesses = 0) {
-    //     losses++;
-    //     document.getElementById('gameOver').innerHTML = "Game over! You lost";   
-    // }
-    // if (losses <= 9) {
-    //     guesses--;
-    // }
-//once the user has used up 3 guesses, the game over will display and the game will end
-    // else if{
-        
-   
-        
-    // }
-//the code below will print the wins, losses, and guesses to the screen
-    
-    document.getElementById('losses').innerHTML = "Losses: " + losses;
-    document.getElementById('guesses').innerHTML = "Guesses Left: " + guesses;
-    
-
-})
-
-
-    </script>
+ <script src="assets/main.js"></script>
    
 </body>
+<footer>
+      <div class="row">
+    <div class="col-lg-12">
+      <div class="navbar navbar-default navbar-fixed-bottom">
+        <p class="navbar-text">© 2017 - Site Built By Heather Mathies</p>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+<!-- closing container-fluid tag -->
+</div>
+
+</footer>
 </html>
