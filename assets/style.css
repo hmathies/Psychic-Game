@@ -1,21 +1,21 @@
       
-        /*This is styling for the navigation bar and footer*/
+        /*This is styling for the heading*/
        .header {
         text-align: center;
         word-spacing: 10px;
         color: blue;
+        position: relative;
        }
+        /*this is styling for the header div*/
+       .navbar-custom {
+        background-color: lightgray;
+        font-family: 'Sedgwick Ave', cursive;
+        font-size: 25px;
+        position: relative;
+        }
 
-
-        .footer {
-                background: #FFFFF0;
-                position: relative;
-                clear: both;
-            }
-
-
-
-        /*This is styling for the 'game over' and 'you win' text that pops up */	
+        /*This is styling for the 'game over' and 'you win' text that pops up for my older version..
+        I am leaving it here in case I can get it to work on my newest version*/	
         #gameOver {
 				color: red;
 				font: monospace;
@@ -25,9 +25,10 @@
 				font-size: 60px;
 				font-stretch: 10px;
 				font-family: 'Sedgwick Ave', cursive;
-        	}
-        /*this is styling for the game div*/
-        	#game {
+        }
+        /*this is styling for the results div that prints
+        the wins, losses, etc*/
+        #results {
         		margin: 0px 70px 0px 70px;
         		text-indent: 20px;
     			background: aliceblue;
@@ -36,16 +37,13 @@
 				border-style: groove;
 				border-width: 20px;
 				text-align: center;
-			}
+                font-size: 20px;
+		}
 		/*this is styling for the background*/
         	body {
-        		background: cornflowerblue;
-        	}
-
-        	body, html {
-    			height: 100%;
-    			margin: 0px;
-			}
+        		background: cornflowerblue; 
+        }
+        
 
 		
      

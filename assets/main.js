@@ -1,61 +1,40 @@
   
-
-//this is the array that holds the computer choices for the guessing game
-        var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-
-// Variables for tracking our wins, losses and ties. Wins and losses are set to 0 so that it always begins there.  Guesses are set to 3 because it counts down. 
-        var wins = 0;
-        var losses = 0;
-        var guesses = 9;
-//the computer will select a random letter of the alphabet.
-        var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
-//the user will select a letter 
-        document.addEventListener('keyup', function(event) {
-            var userGuess = event.key;
- //the userGuess and computerChoice are compared.  If they are the same, the wins increase.  If they are not, the losses increase and guesses decreases     
-    if(userGuess == computerChoice){
+  
+    var AlphabetArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    var wins = 0;
+    var losses = 0;
+    var guessesLeft = 13;
+    var guessedLetters = []; //Array to capture user letter inputs
+    document.onkeyup = function(event) {
+      var yourGuess = event.key; //variable to capute user's guess
+      guessedLetters.push(yourGuess); //This will capture letters entered by the user    
+      var ComputerAns = AlphabetArr[Math.floor(Math.random() * AlphabetArr .length)];
+      
+      //If your guess matches the computer's guess,
+      //a point is added to the "Wins" tally and the guesses tally substrats
+      if (yourGuess === ComputerAns) {
         wins++;
-        guesses--;
-        //the code below will print the wins, losses, and guesses to the screen
-		document.getElementById('gameOver').innerHTML = "You won!";
-        document.getElementById('win').innerHTML = "Wins: " + wins;
-        document.getElementById('guesses').innerHTML = "Guesses Left: " + guesses;
-
-	}
-    else {
-        //this makes the guesses go down every time
-        guesses--;
-    }
-    if (guesses < 1) {
-        //display the loss to the screen
+        guessesLeft--;
+      }
+      //If letter does not not match the computer guess, your number of guesses remaining are deducted.
+      else {
         losses++;
-        //the code below will print the wins, losses, and guesses to the screen
-         document.getElementById('guesses').innerHTML = "Guesses Left: " + guesses;
-          document.getElementById('losses').innerHTML = "Losses: " + losses;
+        guessesLeft--;
+      }
+      //If the guesses remaining equals 0, the game is over and values are reset
+      if (guessesLeft === 0) {
+          guessesLeft = 13;
+          guessedLetters = [];
+          losses=0;
+          wins=0;
+      }
+       
+      var html= "<p>Guess what letter I'm thinking of:</p>" +
+        "<p>Wins: " + wins + "</p>" +
+        "<p>Loses: " + losses + "</p>" +
+        "<p>Guesses Remaining: " + guessesLeft + "</p>" +
+        "<p>Guessed Letter: " + guessedLetters.join(', ') + "</p>" ;
+      
+        document.getElementById("results").innerHTML = html;
+        
     }
-    // else{
-    //     guesses--;
-    // }
-    // if (guesses = 0) {
-    //     losses++;
-    //     document.getElementById('gameOver').innerHTML = "Game over! You lost";   
-    // }
-    // if (losses <= 9) {
-    //     guesses--;
-    // }
-//once the user has used up 3 guesses, the game over will display and the game will end
-    // else if{
-        
-   
-        
-    // }
-//the code below will print the wins, losses, and guesses to the screen
-    
-    document.getElementById('losses').innerHTML = "Losses: " + losses;
-    document.getElementById('guesses').innerHTML = "Guesses Left: " + guesses;
-    
-
-})
-
-
-    
