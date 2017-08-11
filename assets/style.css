@@ -1,17 +1,17 @@
       
         /*This is styling for the heading*/
        .header {
-        text-align: center;
-        word-spacing: 10px;
-        color: blue;
-        position: relative;
+                text-align: center;
+                word-spacing: 10px;
+                color: blue;
+                position: relative;
        }
         /*this is styling for the header div*/
        .navbar-custom {
-        background-color: lightgray;
-        font-family: 'Sedgwick Ave', cursive;
-        font-size: 25px;
-        position: relative;
+                background-color: lightgray;
+                font-family: 'Sedgwick Ave', cursive;
+                font-size: 25px;
+                position: relative;
         }
 
         /*This is styling for the 'game over' and 'you win' text that pops up for my older version..
